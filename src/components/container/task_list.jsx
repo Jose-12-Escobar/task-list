@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { LEVELS } from "../../models/levels.enum";
 import { Task } from "../../models/task.class";
+import TaskForm from '../pure/forms/taskForm';
 import TaskComponent from '../pure/task';
 
 
 
 const TaskListComponent = () => {
 
-  const defaultTask = new Task('Example', 'Default description', true, LEVELS.NORMAL);
+  const defaultTask1 = new Task('Example', 'Default description', true, LEVELS.NORMAL);
+  const defaultTask2 = new Task('Example', 'Default description', false, LEVELS.URGENT);
+  const defaultTask3 = new Task('Example', 'Default description', false, LEVELS.BLOCKING);
+
 
   //Estado del componente 
-  const [tasks, setTasks] = useState([defaultTask]);
+  const [tasks, setTasks] = useState([defaultTask1, defaultTask2, defaultTask3]);
   const [loading, setLoading] = useState(true);
 
   //Control dle ciclo de vida del componente
@@ -37,7 +41,7 @@ const TaskListComponent = () => {
             </h5>
           </div>
           {/* Card Body (content) */}
-          <div className='card-body' data-mbd-perfect-scrollbar='treu' style={{ position: 'relative', height: '400px' }}>
+          <div className='card-body row' data-mbd-perfect-scrollbar='treu' style={{ position: 'relative', height: '400px' }}>
             <table>
               <thead>
                 <tr>
@@ -48,14 +52,21 @@ const TaskListComponent = () => {
                 </tr>
               </thead>
               <tbody>
-                <TaskComponent task={defaultTask}></TaskComponent>  
+                { tasks.map((task, index) => {
+                    return (
+                          <TaskComponent
+                              key={index}
+                              task={task}>
+                          </TaskComponent>
+                        )
+                    }
+                )}
               </tbody>
             </table>
           </div>
+          <TaskForm></TaskForm>
         </div>
       </div>
-      {/* TODO: Aplicar un For/Map para renderizar una lisat  */}
-      {/* <TaskComponent task={defaultTask}></TaskComponent> */}
     </div>
   )
 }
