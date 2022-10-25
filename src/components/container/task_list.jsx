@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { LEVELS } from "../../models/levels.enum";
 import { Task } from "../../models/task.class";
-import TaskForm from '../pure/forms/taskForm';
+import Taskform from '../pure/forms/taskForm';
 import TaskComponent from '../pure/task';
 
 
 
 const TaskListComponent = () => {
 
-  const defaultTask1 = new Task('Example', 'Default description', true, LEVELS.NORMAL);
-  const defaultTask2 = new Task('Example', 'Default description', false, LEVELS.URGENT);
-  const defaultTask3 = new Task('Example', 'Default description', false, LEVELS.BLOCKING);
+  const defaultTask1 = new Task('Example1', 'Default description', true, LEVELS.NORMAL);
+  const defaultTask2 = new Task('Example2', 'Default description', false, LEVELS.URGENT);
+  const defaultTask3 = new Task('Example3', 'Default description', false, LEVELS.BLOCKING);
 
 
   //Estado del componente 
@@ -19,15 +19,40 @@ const TaskListComponent = () => {
 
   //Control dle ciclo de vida del componente
   useEffect(() => {
-    console.log('Task State has been modified');
+    console.log('Task State has been modified:');
     setLoading(false);
     return () => {
       console.log('TaskList component is going to unmount...')
     };
   }, [tasks]);
 
-  const changeCompleted = (id) => {
-    console.log('TODO: Cambiar estado de una tarea')
+  // Funcion que permite marcar una tarea como completa o incompleta 
+  function completeTask(task) {
+    console.log('Complete this Task: ', task);
+    const index = tasks.indexOf(task);
+    const tempTasks = [...tasks];
+    tempTasks[index].completed = !tempTasks[index].completed;
+    // We update the state of the component with the new list of tasks  and it 
+    // will update the iteration of the tasks order to show the tas update 
+    setTasks(tempTasks); 
+  }
+
+  // Funcion para eliminar una tarea 
+  function deleteTask(task) {
+    console.log('Esta es la tarea que se quiere borrar: ', task);
+    const index = tasks.indexOf(task);
+    const tempTasks = [...tasks];
+    tempTasks.splice(index,1);
+    setTasks(tempTasks);
+  }
+
+  //Funcion para añadir una tarea
+  function addTask(task) {
+    console.log('Nueva tarea');
+    const index = tasks.indexOf(task);
+    const tempTasks = [...tasks];
+    tempTasks.push(task);
+    setTasks(tempTasks);
   }
 
   return (
@@ -41,7 +66,7 @@ const TaskListComponent = () => {
             </h5>
           </div>
           {/* Card Body (content) */}
-          <div className='card-body row' data-mbd-perfect-scrollbar='treu' style={{ position: 'relative', height: '400px' }}>
+          <div className='card-body ' data-mbd-perfect-scrollbar='treu' style={{ position: 'relative', height: '400px' }}>
             <table>
               <thead>
                 <tr>
@@ -56,7 +81,9 @@ const TaskListComponent = () => {
                     return (
                           <TaskComponent
                               key={index}
-                              task={task}>
+                              task={task}
+                              complete={completeTask}
+                              remove={deleteTask}>
                           </TaskComponent>
                         )
                     }
@@ -64,11 +91,11 @@ const TaskListComponent = () => {
               </tbody>
             </table>
           </div>
-          <TaskForm></TaskForm>
         </div>
       </div>
+      <Taskform add={addTask}></Taskform>
     </div>
-  )
-}
+  );
+};
 
-export default TaskListComponent 
+export default TaskListComponent ;
