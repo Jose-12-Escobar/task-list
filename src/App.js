@@ -1,11 +1,14 @@
 //import logo from './logo.svg';
 import './App.css';
+//import LoginFormik from './components/pure/forms/loginFormik';
+//import ElementRectangle from './components/pure/elementRectangle';
 //import Father from './components/container/father';
 //import GreetingF from './components/pure/greetingF';
 //import Greeting from './components/pure/greeting';
-import TaskListComponent from './components/container/task_list';
-
-
+//import TaskListComponent from './components/container/task_list';
+import TaskFormik from './components/pure/forms/taskFormik';
+//import RegisterFormik from './components/pure/forms/registerFormik';
+//import OptionalRender from './components/pure/optionalRender';
 
 function App() {
   return (
@@ -17,7 +20,14 @@ function App() {
         {/* Componente de Listado de Tareas */}
         {/* Gestión de eventos*/}
         {/* <Father></Father> */}
-        <TaskListComponent></TaskListComponent>
+
+        {/* Ejemplos de uso de Formik y Yup */}
+        {/* <LoginFormik></LoginFormik> */}
+        {/* <RegisterFormik></RegisterFormik> */}
+        {/* <TaskListComponent></TaskListComponent> */}
+        <TaskFormik></TaskFormik>
+        {/* <OptionalRender></OptionalRender> */}
+        {/* <ElementRectangle></ElementRectangle> */}
       {/* </header> */}
     </div>
   );
