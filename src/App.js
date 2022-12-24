@@ -1,14 +1,20 @@
 //import logo from './logo.svg';
 import './App.css';
+//import AxiosExample from './components/pure/axiosExample';
+import AxiosTarea from './components/pure/axiosTarea';
+//import FetchExample from './components/pure/fetchExample';
+//import Asyncexample from './components/pure/AsyncExample';
+//import ObservableExample from './components/pure/ObservableExample';
 //import LoginFormik from './components/pure/forms/loginFormik';
 //import ElementRectangle from './components/pure/elementRectangle';
 //import Father from './components/container/father';
 //import GreetingF from './components/pure/greetingF';
 //import Greeting from './components/pure/greeting';
 //import TaskListComponent from './components/container/task_list';
-import TaskFormik from './components/pure/forms/taskFormik';
+//import TaskFormik from './components/pure/forms/taskFormik';
 //import RegisterFormik from './components/pure/forms/registerFormik';
 //import OptionalRender from './components/pure/optionalRender';
+
 
 function App() {
   return (
@@ -24,8 +30,15 @@ function App() {
         {/* Ejemplos de uso de Formik y Yup */}
         {/* <LoginFormik></LoginFormik> */}
         {/* <RegisterFormik></RegisterFormik> */}
+        {/* <ObservableExample></ObservableExample>  */}
+        {/* <FetchExample></FetchExample> */}
+        {/* <AxiosExample></AxiosExample> */}
+        <AxiosTarea></AxiosTarea>
+
+        {/* Ejemplos de procesos asíncronos */}
+        {/* <Asyncexample></Asyncexample> */}
         {/* <TaskListComponent></TaskListComponent> */}
-        <TaskFormik></TaskFormik>
+        {/* <TaskFormik></TaskFormik> */}
         {/* <OptionalRender></OptionalRender> */}
         {/* <ElementRectangle></ElementRectangle> */}
       {/* </header> */}

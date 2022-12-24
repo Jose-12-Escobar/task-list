@@ -16,7 +16,7 @@ function AppRoutingFinal() {
   return (
     <Router>
       {/* Route Switch */} 
-      <Routes>
+      <Routes> 
         <Route path="/" element={ loggedIn ? <Navigate to='/dashboard' replace /> : <Navigate to='/login' replace /> } />
         {/* Login Route */}
         <Route path="/login" element={ <LoginPage/>}/>
